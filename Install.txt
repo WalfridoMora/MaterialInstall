@@ -1,0 +1,317 @@
+npm install --save @angular/material @angular/cdk @angular/animations
+
+Step 2: Configure animations
+Once the animations package is installed, import BrowserAnimationsModule into your application to enable animations support.
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [BrowserAnimationsModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+
+Step 3: Import the component modules
+Import the NgModule for each component you want to use:
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+@NgModule({
+  ...
+  imports: [MatButtonModule, MatCheckboxModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+
+
+
+Alternatively, you can create a separate NgModule that imports all of the Angular Material components that you will use in your application. You can then include this module wherever you'd like to use the components.
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+@NgModule({
+  imports: [MatButtonModule, MatCheckboxModule],
+  exports: [MatButtonModule, MatCheckboxModule],
+})
+export class MyOwnCustomMaterialModule { }
+
+
+
+********************************
+
+For help getting started with a new Angular app, check out the Angular CLI.
+
+For existing apps, follow these steps to begin using Angular Material.
+
+ Step 1: Install Angular Material, Angular CDK and Angular Animations
+You can use either the npm or yarn command-line tool to install packages. Use whichever is appropriate for your project in the examples below.
+
+ NPM
+npm install --save @angular/material @angular/cdk @angular/animations
+ Yarn
+yarn add @angular/material @angular/cdk @angular/animations
+ Alternative 1: Snapshot Build
+A snapshot build with the latest changes from master is also available. Note that this snapshot build should not be considered stable and may break between releases.
+
+ NPM
+npm install --save angular/material2-builds angular/cdk-builds angular/animations-builds
+ Yarn
+yarn add angular/material2-builds angular/cdk-builds angular/animations-builds
+ Alternative 2: Angular Devkit 6+
+Using the Angular CLI ng add command will update your Angular project with the correct dependencies, perform configuration changes and execute initialization code.
+
+ng add @angular/material
+ Step 2: Configure animations
+Once the animations package is installed, import BrowserAnimationsModule into your application to enable animations support.
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [BrowserAnimationsModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+Alternatively, you can disable animations by importing NoopAnimationsModule.
+
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
+@NgModule({
+  ...
+  imports: [NoopAnimationsModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+ Step 3: Import the component modules
+Import the NgModule for each component you want to use:
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+@NgModule({
+  ...
+  imports: [MatButtonModule, MatCheckboxModule],
+  ...
+})
+export class PizzaPartyAppModule { }
+Alternatively, you can create a separate NgModule that imports all of the Angular Material components that you will use in your application. You can then include this module wherever you'd like to use the components.
+
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+
+@NgModule({
+  imports: [MatButtonModule, MatCheckboxModule],
+  exports: [MatButtonModule, MatCheckboxModule],
+})
+export class MyOwnCustomMaterialModule { }
+Whichever approach you use, be sure to import the Angular Material modules after Angular's BrowserModule, as the import order matters for NgModules.
+
+ Step 4: Include a theme
+Including a theme is required to apply all of the core and theme styles to your application.
+
+To get started with a prebuilt theme, include one of Angular Material's prebuilt themes globally in your application. If you're using the Angular CLI, you can add this to your styles.css:
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+If you are not using the Angular CLI, you can include a prebuilt theme via a <link> element in your index.html.
+
+For more information on theming and instructions on how to create a custom theme, see the theming guide.
+
+ Step 5: Gesture Support
+Some components (mat-slide-toggle, mat-slider, matTooltip) rely on HammerJS for gestures. In order to get the full feature-set of these components, HammerJS must be loaded into the application.
+
+You can add HammerJS to your application via npm, a CDN (such as the Google CDN), or served directly from your app.
+
+To install via npm, use the following command:
+
+ NPM
+npm install --save hammerjs
+ Yarn
+yarn add hammerjs
+After installing, import it on your app's entry point (e.g. src/main.ts).
+
+import 'hammerjs';
+ Step 6 (Optional): Add Material Icons
+If you want to use the mat-icon component with the official Material Design Icons, load the icon font in your index.html.
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+For more information on using Material Icons, check out the Material Icons Guide.
+
+Note that mat-icon supports any font or svg icons; using Material Icons is one of many options.
+
+ Appendix: Configuring SystemJS
+If your project is using SystemJS for module loading, you will need to add @angular/material and @angular/cdk to the SystemJS configuration.
+
+The @angular/cdk package is organized of multiple entry-points. Each of these entry-points must be registered individually with SystemJS.
+
+Here is a example configuration where @angular/material, @angular/cdk/platform and @angular/cdk/a11y are used:
+
+System.config({
+  // Existing configuration options
+  map: {
+    // ...
+    '@angular/material': 'npm:@angular/material/bundles/material.umd.js',
+
+    // CDK individual packages
+    '@angular/cdk/platform': 'npm:@angular/cdk/bundles/cdk-platform.umd.js',
+    '@angular/cdk/a11y': 'npm:@angular/cdk/bundles/cdk-a11y.umd.js',
+    // ...
+    'hammerjs': 'npm:hammerjs',
+  },
+  packages: {
+    //...
+    hammerjs: {main: './hammer.min.js', defaultExtension: 'js'}
+    //...
+  }
+});
+ Example Angular Material projects
+material.angular.io - We build our own documentation with Angular Material!
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+Step:1 Create a new Angular 7 application
+To create a new fresh angular project run this following command. Here we also install routing and style package.
+
+ng new material-ng --routing --style=scss
+ 
+
+Step: 2 Install Angular Material and Dependencies
+After a successful install, a new project now, install Angular Material and some other dependencies like animation and  _________ using 
+
+Step:1 Install Angular /material
+
+npm i --save @angular/material @angular/cdk
+ 
+Step:2 Install Angular Animation
+
+npm i --save @angular/animations
+ 
+Step:3 Install Hammer JS
+
+npm i --save hammerjs
+ 
+
+Step: 3 Import files
+Import some files.
+
+src/main.ts
+
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+// import hammer file
+import 'hammerjs';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
+And also import the browser animation module. and also add in imports array.
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ 
+
+Step: 4 Create a typescript file 
+Now, time to create a simple typescript file in src/app/material.ts 
+
+material.ts
+
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+
+
+@NgModule({
+  imports: [ MatButtonModule, MatCheckboxModule ],
+  exports: [ MatButtonModule, MatCheckboxModule ]
+})
+
+export class MaterialModule {
+
+}
+Here we add two modules Button and Checkbox module, add into then import and export and export a class MaterialModule. if we wanna add more component of angular Material we can it's at first line in the material.ts.
+
+Now import this MaterialModule into  app.module.ts
+
+app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// import this new file
+import { MaterialModule } from './material';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ 
+
+Step:5 Include a theme
+Angular Material provides us with four themes.
+
+deeppurple-amber.css
+
+indigo-pink.css
+
+pink-bluegrey.css
+
+purple-green.css
+
+Choose one theme and include into style.scss
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+ 
+
+Step:6 Now add a button component
+Now, all setup is completed we can use a button and checkbox component. if you want more add then into material.ts.
+
+app.component.html
+
+
+<h3>Raised Buttons</h3>
+<div class="example-button-row">
+  <button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+  <a mat-raised-button routerLink=".">Link</a>
+</div>
+<router-outlet></router-outlet>
